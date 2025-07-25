@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique - Convoyeur Intelligent | RoboStim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1>ROBO<span>STIM</span></h1>
+            </div>
+
+            <!-- Bouton Retour -->
+            <button id="backButton" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#presentation" class="active"><i class="fas fa-flask"></i> Présentation</a></li>
+                    <li><a href="#composants"><i class="fas fa-microchip"></i> Composants</a></li>
+                    <li><a href="#realisation"><i class="fas fa-project-diagram"></i> Réalisation</a></li>
+                    <li><a href="#code"><i class="fas fa-code"></i> Code</a></li>
+                    <li><a href="#conclusion"><i class="fas fa-flag-checkered"></i> Conclusion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Documentation technique du Test Final en Electronique</h2>
+            <p><strong>Test final :</strong> Convoyeur intelligent de tri des déchets</p>
+            <div class="btn-container" style="margin-top: 30px;">
+                <a href="#presentation" class="btn">Commencer la lecture</a>
+                <a href="https://vimeo.com/1095186825/ad60296bef?share=copy" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-video"></i> Voir la démo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <div class="content">
+            <div class="hackathon-badge">
+                <i class="fas fa-trophy"></i> TRC 25
+            </div>
+            
+            <!-- Présentation Section -->
+            <section id="presentation">
+                <h2 class="section-title"><i class="fas fa-flask"></i>Test final : Convoyeur intelligent de tri des déchets</h2>
+                
+                <div class="highlight">
+                    <p>
+                        Pour un assainissement de notre cadre de vie et pour la protection de notre environnement afin de lutter 
+                        contre les phénomènes de changements et réchauffement climatiques, la gestion des déchets devient une des 
+                        priorités qu’il urge d’améliorer. C’est ce qui pousse à penser à une automatisation du tri de déchets, 
+                        autrefois réalisé par l’homme, afin de gagner du temps et de réduire la contraction de certaines maladies.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3>Objectif du projet</h3>
+                    <p>
+                        Nous venons donc sur l’objectif du test final qui est de réaliser un convoyeur intelligent capable de trier 
+                        un certain nombre de déchets (ici quatre). Face à cela, nous matérialiserons les déchets par des cubes 
+                        colorés afin de pouvoir réaliser un simple tri basé sur la couleur. Ce projet allie mécanique, électronique 
+                        embarquée et communication IoT et donc le secteur informatique. 
+                    </p>
+                </div>
+                
+                <h3 class="section-title">1ère étape : L'avant-projet (étape de réflexion de la faisabilité)</h3>
+
+                <div class="card">
+                    
+                    <p>
+                        Durant cette phase, on a fait une analyse sur les besoins réels du test et le problème à résoudre. 
+                        On a exploré les différentes options de réalisations possibles, les contraintes et des solutions pour y arriver. 
+                    </p>
+                    <P>
+                        Durant cette phase, il fallait vraiment se focaliser sur l’objectif visé : réaliser un convoyeur 
+                        intelligent doté de capteurs, d’actionneurs et d’une interface Web accessible sur laquelle se 
+                        fera le compte des déchets triés.
+                    </P>
+                    <P>
+                        On en est arrivé à finalement se décider sur cette maquette de convoyeur que la documentation
+                        mécanique vous donnera plus d’informations.
+                    </P>
+
+                    <P align="center">
+                        <img src="images/convo.jpg" alt="Maquette du convoyeur" width="600">
+                    </P>
+                    <p>
+                        Pour ce qui est de ce document, on se servira juste des 
+                        apports de la partie mécanique pour vous détailler notre parcours en électronique. 
+                    </p>
+                    <p>
+                        Cette modélisation est le fruit d’une longue réflexion. Notre convoyeur a été pensé ainsi :
+                    </p>
+
+                    <div class="card2">
+                        <ul class="step-list">
+                            <li>Au repos du système, le tapis du convoyeur est au repos.</li>
+                            <li>La détection de déchet sur le tapis entraîne sa mise en marche.</li>
+                            <li>Le tapis l’entraîne jusqu’à la zone de détection de sa couleur. On a prévu que
+                                lorsque le déchet s’approche de la zone de détection de couleur, que le tapis
+                                ralentisse pour faciliter une meilleure détection de la couleur.</li>
+                            <li>Après la détection de couleur, cette info doit être perçu sur notre interface Web 
+                                sans oublier des messages depuis le début sur un écran pour un meilleur débogage.</li>
+                            <li>Après cette étape, notre déchet doit être drainé par notre tapis pour être expulsé hors du tapis. </li>
+                            <li>Notre tapis passe alors au repos s’il n’y a pas de déchet détecté.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card3">
+                        <p>
+                            Un problème rencontré au cours de ce test a été vraiment le choix du moteur d’entrainement du tapis
+                            et de l’alimentation adaptée, dont on a trouvé une solution. On vous en parlera plus dans la suite.
+                        </p>
+                        <p>
+                            Après avoir défini les objectifs généraux du système et précisé les contraintes techniques,
+                            il convient de passer à la phase d’initialisation où on sélectionnera les composants
+                            essentiels, garants de la fonctionnalité, de la fiabilité du système.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Composants Section -->
+            <section id="composants">
+                <h3 class="section-title"><i class="fas fa-microchip"></i> 2ème étape : L’initialisation (le choix des composants) </h3>
+                <p>
+                    Pour le bon fonctionnement de notre convoyeur, il a été question de sélectionner des composants 
+                    fiables et complémentaires, adaptés aux exigences de tri automatisé des déchets, notamment :
+                </p>
+                
+                <div class="card">
+                    <h3>a. Le capteur de couleur TCS-34725 :</h3>
+                    <p>
+                        C’est un capteur optique numérique qui mesure les couleurs RVB et claires, 
+                        c’est-à-dire l’intensité de la lumière rouge, verte, bleue et claire. 
+                    </p>
+                    <p align="center">
+                        <img src="images/TCS34725.webp" alt="Capteur de couleur TCS-34725" width="250">
+                    </p>
+                    <p>
+                        Contrairement à d'autres capteurs plus basiques, celui-ci offre une plus 
+                        grande précision et une plus grande facilité d'utilisation grâce à sa sortie 
+                        numérique et sa capacité à communiquer via I2C.
+                    </p>
+                    <p>
+                        Il intègre également un filtre infrarouge (IR), qui améliore la qualité des 
+                        mesures dans des conditions de lumière ambiante, en éliminant une partie du 
+                        bruit susceptible de fausser les résultats. Grâce à son convertisseur 
+                        analogique-numérique ADC 16 bits, la mesure est très précise.
+                    </p>
+                    <p>
+                        Dans notre système, c’est lui qui sera chargé lors du passage du déchet,
+                        de détecter la couleur du déchet.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3>b. La diode Laser KY-008 (émettrice de rayon) :</h3>
+                    <p>
+                        La diode laser est une petite diode semi-conductrice qui émet physiquement un
+                        rayonnement. Cette diode est directement pompée avec un courant électrique qui 
+                        crée des conditions de laser à la jonction de la diode. Ils peuvent donc 
+                        transformer l’énergie électrique directement en lumière.
+                    </p>
+                    <p>
+                        La configuration des broches du module laser KY-008 est illustrée 
+                        ci-dessous. Ce module comprend trois broches qui sont expliquées
+                        ci-dessous.
+                    </p>
+                    <div class="image-container">
+                        <img src="images/laser2.webp" alt="Diode laser KY-008" width="250">
+                        <img src="images/las.png" alt="Brochage diode laser" width="250">
+                    </div>
+                    <ul class="component-list">
+                        <li><i class="fas fa-plug"></i> <strong>Broche 1 (S)</strong>: il s’agit de la broche de 
+                            signal du module qui contrôle l’état de la diode laser (éteint ou allumé).</li>
+                        <li><i class="fas fa-bolt"></i> <strong>Broche 2 (5V)</strong> : il s’agit d’une broche pour alimenter la diode laser</li>
+                        <li><i class="fas fa-minus-circle"></i> <strong>Broche 3 (GND) </strong> : Il s’agit de la broche 0V du module, la masse.</li>
+                    </ul>
+                    <p>
+                        Ce module est chargé d’émettre continuellement le faisceau laser, tant qu’elle est alimentée,
+                        sur une photorésistance et c’est l’interruption de ce faisceau qui démarre le système du convoyeur.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3>c. La photorésistance :</h3>
+                    <p>
+                        Une photorésistance est un dispositif semi-conducteur qui diminue sa résistance
+                        électrique lorsqu’il est exposé à la lumière.
+                    </p>
+                    <p align="center">
+                        <img src="images/ldr.webp" alt="Photorésistance" width="300">
+                    </p>
+                    <p>
+                        C’est notre photorésistance qui sera, tout le temps, éclairée par le faisceau 
+                        de notre diode laser et qui, non éclairée voudra signifier à notre 
+                        système la présence de déchet au niveau de notre tapis et donc son démarrage.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>d. Le microcontrôleur ATMEGA328-P :</h3>
+                    <p>
+                        L'ATMEGA328-P est un microcontrôleur AVR 8 bits connu pour sa combinaison équilibrée
+                        de performances, d'efficacité énergétique et de facilité d'utilisation. Il dispose
+                        d'une large gamme de périphériques et d'interfaces, ce qui le rend adapté à tout,
+                        du contrôle du moteur et de l'acquisition de données à l'électronique
+                        grand public et au prototypage.
+                    </p>
+                    <p class="image-container">
+                        <img src="images/ATmega328.jpg" alt="ATmega 328P" width="300">
+                        <img src="images/atmega.png" alt="ATmega 328P brochage" width="300">
+                    </p>
+                    <p>
+                        Il représente le cerveau de notre système. C’est à lui de récupérer des
+                        informations des capteurs comme la nature de la couleur et de le
+                        transmettre à une carte ESP8266 via communication UART, chargée
+                        de faire le pont entre la partie électronique et l’interface Web.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3>e. La carte ESP8266 :</h3>
+                    <p>
+                        Les utilisateurs de notre convoyeur ont le droit de savoir comment
+                        évoluent le transport des déchets, si les déchets de différentes 
+                        natures ne se mélangent pas, et ce de n’importe où et à n’importe 
+                        quel moment. Notre équipe a donc fait le choix du module 
+                        de communication intégrant le microcontrôleur ESP8266 pour 
+                        collecter les informations au niveau du système 
+                        de notre convoyeur et les envoyer vers une interface Web 
+                        dynamique et accessible à qui le veut.
+                    </p>
+                    <p>
+                        C’est un circuit avec développé par la société chinoise,
+                        Espressif Systems, qui fonctionne naturellement avec Internet.
+                    </p>
+                    <p class="image-container">
+                        <img src="images/esp8266.jpg" alt="ESP8266" width="300">
+                        <img src="images/PinESP8266.jpg" alt="ESP8266 brochage" width="350">
+                    </p>
+                    <p>
+                        On peut se servir du module pour : 
+                        <ul class="step-list">
+                            <li>Créer un serveur Web, pour visualiser les données d'un capteur 
+                                sur un téléphone mobile ou un ordinateur via le navigateur Web ou bien pour lui envoyer des commandes comme fermer la porte du garage ou arroser les plantes </li>
+                            <li>Communiquer avec un serveur Web, pour envoyer ou recevoir des 
+                                données sur le Web, à partir d'un site. </li>
+                            <li>Créer un réseau maillé, où chaque module envoie et reçoit des 
+                                informations des autres. </li>
+                            <li>Créer des connexions sans fils, et donc envoyer et recevoir 
+                                des informations par le Wi-Fi en passant par d'autres 
+                                méthodes que le navigateur Web, par communications UDP/TCP/OSC.</li>
+                        </ul>
+
+                    </p>
+                    <p>
+                        Mais pour notre système, afin de rendre notre site accessible à tout 
+                        administrateur pour la visualisation du compte de déchets triés, on a 
+                        opté pour sa deuxième utilité précédemment mentionnée : 
+                        communiquer avec un serveur Web en y envoyant et recevant des 
+                        données. Nous avons opté ici pour la configuration d’une base de
+                        données Firebase, où toutes les infos y sont mises pour que notre 
+                        interface puisse y lire et afficher. 
+                    </p>
+
+                    <p>
+                        En résumé, notre carte ESP8266 sera chargée de mettre à jour notre base de données 
+                        en temps réel pour le compte des différents déchets triés après avoir bien reçu 
+                        ces informations de notre microcontrôleur ATMEGA328-P qui ne 
+                        communiqueront que par liaison Série ou encore appelée UART (Universal
+                        Asynchronous Receiver-Transmitter).
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>f. Le capteur à ultrasons HC-SR04 :</h3>
+                    <p>
+                        Les capteurs à ultrasons sont des dispositifs qui utilisent des fréquences 
+                        audio pour la détection de présence et/ou pour calculer la distance d'un 
+                        objet distant. Le terme ultrasons fait référence à des fréquences audio 
+                        qui se situent en dehors de la gamme d'audition humaine (20 kHz).
+                    </p>
+                    <p class="image-container">
+                        <img src="images/ultrason.webp" alt="Ultrason " width="300">
+                        <img src="images/ultr.jpg" alt="Ultrason" width="350">
+                    </p>
+                    <p>
+                        Pour notre système, on a prévu l’utiliser en fin de tapis. Vous vous demandez 
+                        pourquoi, n’est-ce pas ?? Pendant que notre tapis conduit notre déchet après 
+                        la détection, comment peut-on savoir que ce dernier s’approche de la fin ? 
+                        Comment mettre fin à la rotation du moteur si le déchet atteint la fin du 
+                        convoyeur ? C’est là qu’intervient le capteur à ultrasons HC-SR04. Il 
+                        pourra surveiller l’approche de la fin d’un déchet en balayant une zone
+                        proche de la fin du convoyeur, ce qui mettra donc fin à l’avancée du 
+                        tapis (soit à l’arrêt du moteur).
+                    </p>
+                    
+                </div>
+
+                <div class="card">
+                    <h3>g.	La LED RGB</h3>
+                    <p>
+                        La LED RGB (ou Light-Emitting Diode Red-Green-Blue) est un composant
+                        électronique polyvalent capables d’émettre une large gamme de couleurs
+                        en combinant les trois couleurs : rouge, vert et bleu.
+                    </p>
+                    <p class="image-container">
+                        <img src="images/rgb.webp" alt=" LED RGB" width="300">
+                        <img src="images/rgb.png" alt=" LED RGB" width="300">
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>h.	L’écran LCD I2C :</h3>
+                    <p>
+                        Un afficheur LCD (Liquid Crystal Display) est un dispositif d’affichage dont
+                        l’écran est principalement composé de cristaux liquides qui sont des molécules
+                        organiques qui peuvent être alignées pour bloquer ou laisser passer la lumière
+                        par contrôle électrique. Les afficheurs LCD utilisent cette propriété pour
+                        afficher des textes ou caractères. Le terme I2C accompagnant le nom de
+                        notre dispositif est très significatif. Il signifie que ce type
+                        d’afficheur communique uniquement par deux broches SDA et SCL
+                        grâce à un module de simplification qui lui est rattaché,
+                        ce qui réduit le nombre de broches, initialement à seize,
+                        à quatre (car il a aussi besoin de 2 autres broches pour l’alimenter) !
+                    </p>
+                    <p class="image-container">
+                        <img src="images/lcd.jpg" alt=" LCD" width="300">
+                    </p>
+                    <p>
+                        Dans notre système, il servira à afficher des messages claires
+                        et simples pour surveiller en présentiel le fonctionnement de notre convoyeur.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>i. Le moteur :</h3>
+                    <p>
+                        Pour entrainer notre tapis, on a opté pour un moteur pouvant délivrer un couple 
+                        nécessaire pour le faire tourner. On était parti au départ sur un moteur pas 
+                        à pas mais pour quelques problèmes de réalisation rencontrés pendant les 
+                        tests, nous nous sommes entendus pour l’utilisation du moteur à engrenages
+                        modèle XD37GB-555YSY d’une tension nominale de12V et d’une rotation 
+                        maximale de 200 RPM.
+                    </p>
+                    <p class="image-container">
+                        <img src="images/motor3.webp" alt="" width="300">
+                        <img src="images/motor.jpg" alt="" width="300">
+                        <img src="images/motor2.png" alt="" width="300">
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>j. Le driver L298N :</h3>
+                    <p>
+                        Le composant L298N est un circuit intégré de chez STMicroelectronics. Elle contient essentiellement :
+                        <ul class="step-list">
+                            <li>2 ponts en H, permettant de piloter chacun 1 moteur électrique DC (dans un sens, ou dans l’autre)</li>
+                            <li>Et une commande logique à de faible intensité, pour piloter des moteurs à « fort courant »</li>
+                        </ul>
+                    </p>
+                    <p class="image-container">
+                        <img src="images/datasheetL298N.jpg" alt="L298N brochage" width="400">
+                        <img src="images/L298N.webp" alt="L298N" width="350">
+                    </p>
+                    <p>
+                        Le L298N est simplement un « double étage de puissance », permettant de commander directement deux 
+                        moteurs électriques, via des commandes logiques « basse puissance ». C’est donc le composant idéal 
+                        pour aisément contrôler le sens et la vitesse de rotation du moteur à courant continu que nous
+                        voulons utiliser pour notre convoyeur.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>k. L’alimentation :</h3>
+                    <p>
+                        Comme nous le savons tous, on ne peut pas parler de composants électroniques sans 
+                        parler de la source d’alimentation !
+                    </p>
+                    <p>
+                        Pour cette section, nous avons fait le choix d’une batterie adaptée pour notre 
+                        système : la batterie LiPo 12800mAh 7.4 VDC avec son chargeur accompagné de son 
+                        propre chargeur, avec un amplificateur de tension, le module XL6009, pour 
+                        obtenir une alimentation de 12 VDC.
+                    </p>
+                    <p class="image-container">
+                        <img src="images/alim.png" alt="" width="800">
+                    </p>
+                </div>
+
+                
+
+
+                <!-- Continuer avec les autres composants de la même manière -->
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Rôle</th>
+                                <th>Communication</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ATMEGA328-P</td>
+                                <td>Cerveau du système</td>
+                                <td>UART vers ESP8266</td>
+                            </tr>
+                            <tr>
+                                <td>ESP8266</td>
+                                <td>Communication IoT</td>
+                                <td>WiFi vers interface web</td>
+                            </tr>
+                            <tr>
+                                <td>HC-SR04</td>
+                                <td>Détection fin de convoyeur</td>
+                                <td>Signal numérique</td>
+                            </tr>
+                            <!-- Ajouter les autres composants -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Réalisation Section -->
+            <section id="realisation">
+                <h2 class="section-title"><i class="fas fa-project-diagram"></i> Réalisation du projet</h2>
+                
+                <div class="card">
+                    <h3>3ème étape : La planification des tâches </h3>
+                    <p>
+                        Pour cette étape, il fallait diviser les différentes équipes pour 
+                        exécuter des tâches nécessaires pour le test: 
+                    </p>
+                    <ul class="step-list">
+                        <li>Une, pour étudier chaque composant, du rôle jusqu’à un essai sur une platine d’essai ;</li>
+                        <li>Une autre pour l’étude du fonctionnement du convoyeur ;</li>
+                        <li>Et une autre chargée de recueillir les résultats de chaque équipe pour l’écriture du code pour notre convoyeur.</li>
+                    </ul>
+
+                    <p>
+                        Ce travail à la chaine nous a permis de gagner en temps et en efficacité.
+                        C’est après cela que l’on a pu fabriquer notre circuit imprimé et ainsi poursuivre notre réalisation.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3>4ème étape : L’exécution (la réalisation) :</h3>
+                    <p>Pour la conception du circuit électronique, nous avons opté pour la réalisation d’un PCB pour faciliter la mise en place et la soudure des composants. </p>
+                    <p>
+                        D’abord, nous nous sommes occupés de la conception CAO de notre système de commande faisant office de carte Arduino dont le cerveau est l’ATMEGA328-P. 
+                        Ci-dessous se présente la schématique de ce système sous KiCAD :
+                    </p>
+                    <div >
+                        <img src="images/schema_kicad.png" alt="Schéma KiCAD" width="800">
+                        <br>
+                        <p>
+                            Nous avons prévu des borniers pour les broches I/O de l’ATMEGA328-P, pour les alimentations d’entrée et de sortie, pour certaines broches 
+                            analogiques (celles dont on a besoin), et pour les broches de communication (SDA, RX, SCL, etc.). Pour l’alimentation d’entrée du circuit, 
+                            nous avons exigés une tension de 12V, nous allons nous en servir pour obtenir une tension de 5V par régulation pour alimenter le circuit 
+                            de contrôle.  Concernant les broches RX et TX, nous en avons besoin : d’une part pour la réception du code par FTDI, d’autre part pour 
+                            la communication avec la carte ESP8266. Voilà donc une petite explication de notre schématique.
+                        </p>
+                        <p>
+                            Ensuite, nous nous sommes tournés vers la conception du PCB sous KiCAD. Elle s’illustre par l’image suivante :
+                        </p>
+                        <br>
+                        <img src="images/pcb_design.png" alt="PCB design" width="800">
+                        <br>
+                        <p>
+                            Le PCB ci-dessus a une dimension de 51 x 71 mm, les pistes de liaisons ont une épaisseur de 0,7 mm pour éviter les problèmes de conception, 
+                            la grande majorité des pastilles des composants ont été grossis pour une soudure plus aisée, les broches des borniers ou connecteurs 
+                            ont été annotés pour permettre une utilisation plus facile de celles-ci. Information importante, le PCB utilisé est un simple en 
+                            raison de la nature des composants électroniques utilisés (des composants THT) et des équipements à notre disposition. 
+                            Pour avons fait une capture d’écran du circuit imprimé en 3D pour avoir un aperçu proche de la réalité de notre système :
+                        </p>
+                    </div>
+                    <p>Caractéristiques du PCB :</p>
+                    <ul class="component-list">
+                        <li><i class="fas fa-ruler"></i> Dimensions : 51 x 71 mm</li>
+                        <li><i class="fas fa-bolt"></i> Alimentation : 12V entrée, 5V régulé</li>
+                        <li><i class="fas fa-microchip"></i> Broches I/O pour ATMEGA328-P</li>
+                        <li><i class="fas fa-plug"></i> Connecteurs pour communication UART</li>
+                    </ul>
+                    <br>
+                    <img src="images/pcb_1.png" alt="PCB design" width="800">
+                    <img src="images/pcb_2.png" alt="PCB design" width="800">
+                </div>
+                
+                <div class="card">
+                    <h3>5ème étape : Le test </h3>
+                    <p>
+                        Pour les différents tests, on a pu réaliser les tests pour vérifier si nos 
+                        composants fonctionnaient. Il s’agit des tests sur les composants comme : 
+                        le fonctionnement adéquat de la diode laser et de la photorésistance, celle 
+                        du capteur de couleur, celle du moteur à courant continu, celle du transfert 
+                        réel de la carte Arduino à l’ESP8266 et de la mise à jour en temps réel sur 
+                        l’interface sans oublier celui du capteur ultrason et de la diode RGB.
+                    </p>
+                    <p>
+                        On a pu ainsi facilement reconstituer le tout pour notre challenge : réussir à faire notre convoyeur. 
+                    </p>
+
+                    <p>Donc on a fait des tests sur ces différents composants :</p>
+                    <ul class="step-list">
+                        <li>Fonctionnement diode laser et photorésistance</li>
+                        <li>Détection précise des couleurs</li>
+                        <li>Contrôle du moteur à courant continu</li>
+                        <li>Communication Arduino vers ESP8266</li>
+                        <li>Mise à jour en temps réel de l'interface web</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Code Section -->
+            <section id="code">
+                <h2 class="section-title"><i class="fas fa-code"></i> Explication du code</h2>
+                
+                <div class="card">
+                    <h3>Structure générale</h3>
+                    <p>Le code principal est divisé en plusieurs parties :</p>
+                    <ul class="step-list">
+                        <li>Initialisation des capteurs et périphériques</li>
+                        <li>Boucle principale de détection et contrôle</li>
+                        <li>Communication avec l'ESP8266</li>
+                        <li>Gestion des événements (détection, tri, etc.)</li>
+                    </ul>
+                    
+                    <h4 class="section-subtitle">Bibliothèques utilisées</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">#include</span> &lt;Wire.h&gt;       <span class="code-comment">// Communication I2C</span><br>
+                        <span class="code-keyword">#include</span> "Adafruit_TCS34725.h" <span class="code-comment">// Capteur couleur</span><br>
+                        <span class="code-keyword">#include</span> &lt;LiquidCrystal_I2C.h&gt; <span class="code-comment">// Ecran LCD</span><br>
+                        <span class="code-keyword">#include</span> &lt;ESP8266WiFi.h&gt; <span class="code-comment">// Communication WiFi</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Fonctionnement principal</h3>
+                    <div class="code-block">
+                        <span class="code-keyword">void</span> loop() {<br>
+                        &nbsp;&nbsp;<span class="code-comment">// 1. Vérifier présence déchet</span><br>
+                        &nbsp;&nbsp;<span class="code-keyword">if</span> (detecter_dechet()) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;activer_moteur();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 2. Détection couleur</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;uint16_t couleur = lire_couleur();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 3. Transmission données</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;envoyer_donnees(couleur);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 4. Attendre expulsion</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;attendre_expulsion();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;arreter_moteur();<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Conclusion Section -->
+            <section id="conclusion">
+                <h2 class="section-title"><i class="fas fa-flag-checkered"></i> Conclusion</h2>
+                
+                <div class="card">
+                    <h3>Résultats obtenus</h3>
+                    <p>Le convoyeur intelligent permet :</p>
+                    <ul class="step-list">
+                        <li>Une détection fiable des déchets par interruption laser</li>
+                        <li>Une identification précise des couleurs</li>
+                        <li>Un tri automatisé avec comptage en temps réel</li>
+                        <li>Une visualisation des données via interface web</li>
+                    </ul>
+                </div>
+                
+                
+                <div class="highlight">
+                    <p>Ce projet démontre la faisabilité d'un système automatisé de tri des déchets, combinant mécanique, électronique et IoT pour une gestion plus efficace des déchets et une réduction de l'impact environnemental.</p>
+                </div>
+            </section>
+            
+            <!-- Video Section -->
+            <section id="video">
+                <h2 class="section-title"><i class="fas fa-video"></i> Vidéo de démonstration</h2>
+                <div class="card">
+                    <a href="https://vimeo.com/1095186825/ad60296bef?share=copy" target="_blank">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                            <img src="images/demo_convoyeur.jpg" alt="Vidéo de démonstration" style="width: 100%; height: auto; border-radius: 10px;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <i class="fas fa-play-circle" style="font-size: 5rem; color: #e74c3c; opacity: 0.8;"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <p style="text-align: center; margin-top: 15px; font-style: italic;">Cliquez pour voir la démonstration du convoyeur en action</p>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3 class="section-subtitle"><i class="fas fa-map-signs"></i> Navigation rapide</h3>
+            <ul class="component-list">
+                <li><a href="#presentation"><i class="fas fa-flask"></i> Présentation</a></li>
+                <li><a href="#composants"><i class="fas fa-microchip"></i> Composants</a></li>
+                <li><a href="#realisation"><i class="fas fa-project-diagram"></i> Réalisation</a></li>
+                <li><a href="#code"><i class="fas fa-code"></i> Code</a></li>
+                <li><a href="#conclusion"><i class="fas fa-flag-checkered"></i> Conclusion</a></li>
+                <li><a href="#video"><i class="fas fa-video"></i> Vidéo</a></li>
+            </ul>
+            
+            <h3 class="section-subtitle"><i class="fas fa-download"></i> Ressources</h3>
+            <ul class="component-list">
+                <li><a href="doc/documentation_convoyeur.pdf"><i class="fas fa-file-pdf"></i> Documentation complète</a></li>
+                <li><a href="code/code_convoyeur.zip"><i class="fas fa-file-code"></i> Code source</a></li>
+                <li><a href="schemas/kicad_files.zip"><i class="fas fa-drafting-compass"></i> Schémas électroniques</a></li>
+            </ul>
+
+            <h3 class="section-subtitle"><i class="fas fa-cube"></i> Composants clés</h3>
+            <ul class="component-list">
+                <li><i class="fas fa-sensor"></i> TCS-34725 (capteur couleur)</li>
+                <li><i class="fas fa-microchip"></i> ATMEGA328-P</li>
+                <li><i class="fas fa-wifi"></i> ESP8266</li>
+                <li><i class="fas fa-motor"></i> Moteur XD37GB</li>
+                <li><i class="fas fa-battery-full"></i> Batterie LiPo 7.4V</li>
+            </ul>
+            
+            <div class="card" style="margin-top: 20px; background: linear-gradient(135deg, #3498db, #2c3e50); color: white;">
+                <h3 style="color: white;"><i class="fas fa-info-circle"></i> À propos du projet</h3>
+                <p>Ce projet a été réalisé dans le cadre de la Tekbot Robotics Challenge (TRC) par l'équipe RoboStim.</p>
+                <p>Objectif : Concevoir un convoyeur intelligent pour le tri automatisé des déchets.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-microchip footer-icon"></i>
+                        <div>
+                            <h3>ROBO<span>STIM</span></h3>
+                            <p>Documentation technique du convoyeur intelligent</p>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h3>Références</h3>
+                        <ul class="component-list">
+                            <li><a href="https://www.watelectronics.com/ky-008-laser-module/" target="_blank"><i class="fas fa-link"></i> KY-008 Documentation</a></li>
+                            <li><a href="https://www.vyrian.com/blog/atmega328p-microcontroller-features-pinout-configuration-datasheets/" target="_blank"><i class="fas fa-link"></i> ATMEGA328-P Datasheet</a></li>
+                            <li><a href="https://www.moussasoft.com/esp32-et-esp8266/" target="_blank"><i class="fas fa-link"></i> ESP8266 Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <div class="copyright-content">
+                        <p>&copy; 2025 Documentation technique du convoyeur intelligent - Team ROBOSTIM.</p>
+                        <div class="footer-badge">
+                            <i class="fas fa-trophy"></i> TRC 25
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
