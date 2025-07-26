@@ -40,11 +40,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h2>Documentation technique du Test Final en Electronique</h2>
-            <p><strong>Test final :</strong> Convoyeur intelligent de tri des déchets</p>
+            <h2>Documentation Technique du Test Final en Electronique</h2>
+            <p class="centre-titre"><strong>Test final :</strong> Convoyeur intelligent de tri des déchets</p>
             <div class="btn-container" style="margin-top: 30px;">
                 <a href="#presentation" class="btn">Commencer la lecture</a>
-                <a href="https://vimeo.com/1095186825/ad60296bef?share=copy" target="_blank" class="btn btn-outline">
+                <a href="" target="_blank" class="btn btn-outline">
                     <i class="fas fa-video"></i> Voir la démo
                 </a>
             </div>
@@ -74,10 +74,10 @@
                 <div class="card">
                     <h3>Objectif du projet</h3>
                     <p>
-                        Nous venons donc sur l’objectif du test final qui est de réaliser un convoyeur intelligent capable de trier 
-                        un certain nombre de déchets (ici quatre). Face à cela, nous matérialiserons les déchets par des cubes 
-                        colorés afin de pouvoir réaliser un simple tri basé sur la couleur. Ce projet allie mécanique, électronique 
-                        embarquée et communication IoT et donc le secteur informatique. 
+                        Nous venons donc sur l’objectif du test final qui est de réaliser un convoyeur intelligent capable de trier
+                        un certain nombre de déchets (ici quatre). Face à cela, nous matérialiserons les déchets par des cubes
+                        colorés afin de pouvoir réaliser un simple tri basé sur la couleur. Ce projet allie mécanique, électronique
+                        embarquée et communication IoT et donc le secteur informatique.
                     </p>
                 </div>
                 
@@ -95,8 +95,8 @@
                         fera le compte des déchets triés.
                     </P>
                     <P>
-                        On en est arrivé à finalement se décider sur cette maquette de convoyeur que la documentation
-                        mécanique vous donnera plus d’informations.
+                        On a finalement décidéde réaliser cette maquette de convoyeur que la documentation
+                        mécanique vous en donnera plus d’informations.
                     </P>
 
                     <P align="center">
@@ -212,8 +212,8 @@
                     </p>
                     <p>
                         C’est notre photorésistance qui sera, tout le temps, éclairée par le faisceau 
-                        de notre diode laser et qui, non éclairée voudra signifier à notre 
-                        système la présence de déchet au niveau de notre tapis et donc son démarrage.
+                        de notre diode laser. Une fois non éclairée, cela voudra signifier à notre 
+                        système la présence de déchet au niveau de notre tapis et donc le démarrage de ce dernier.
                     </p>
                 </div>
 
@@ -228,7 +228,7 @@
                     </p>
                     <p class="image-container">
                         <img src="images/ATmega328.jpg" alt="ATmega 328P" width="300">
-                        <img src="images/atmega.png" alt="ATmega 328P brochage" width="300">
+                        <img src="images/atmega.png" alt="ATmega 328P brochage" width="400">
                     </p>
                     <p>
                         Il représente le cerveau de notre système. C’est à lui de récupérer des
@@ -251,12 +251,12 @@
                         dynamique et accessible à qui le veut.
                     </p>
                     <p>
-                        C’est un circuit avec développé par la société chinoise,
+                        C’est un circuit développé par la société chinoise,
                         Espressif Systems, qui fonctionne naturellement avec Internet.
                     </p>
                     <p class="image-container">
                         <img src="images/esp8266.jpg" alt="ESP8266" width="300">
-                        <img src="images/PinESP8266.jpg" alt="ESP8266 brochage" width="350">
+                        <img src="images/PinESP8266.jpg" alt="ESP8266 brochage" width="400">
                     </p>
                     <p>
                         On peut se servir du module pour : 
@@ -310,8 +310,8 @@
                         la détection, comment peut-on savoir que ce dernier s’approche de la fin ? 
                         Comment mettre fin à la rotation du moteur si le déchet atteint la fin du 
                         convoyeur ? C’est là qu’intervient le capteur à ultrasons HC-SR04. Il 
-                        pourra surveiller l’approche de la fin d’un déchet en balayant une zone
-                        proche de la fin du convoyeur, ce qui mettra donc fin à l’avancée du 
+                        pourra surveiller l’approche du déchet à la fin du convoyeur en balayant cette zone
+                        proche, ce qui mettra donc fin à l’avancée du 
                         tapis (soit à l’arrêt du moteur).
                     </p>
                     
@@ -399,7 +399,7 @@
                     </p>
                     <p>
                         Pour cette section, nous avons fait le choix d’une batterie adaptée pour notre 
-                        système : la batterie LiPo 12800mAh 7.4 VDC avec son chargeur accompagné de son 
+                        système : la batterie LiPo 12800mAh 7.4 VDC accompagné de son 
                         propre chargeur, avec un amplificateur de tension, le module XL6009, pour 
                         obtenir une alimentation de 12 VDC.
                     </p>
@@ -413,7 +413,7 @@
 
                 <!-- Continuer avec les autres composants de la même manière -->
                 
-                <div class="table-container">
+                <!--<div class="table-container">
                     <table>
                         <thead>
                             <tr>
@@ -438,10 +438,10 @@
                                 <td>Détection fin de convoyeur</td>
                                 <td>Signal numérique</td>
                             </tr>
-                            <!-- Ajouter les autres composants -->
+                            Ajouter les autres composants
                         </tbody>
                     </table>
-                </div>
+                </div>-->
             </section>
             
             <!-- Réalisation Section -->
@@ -494,7 +494,7 @@
                             la grande majorité des pastilles des composants ont été grossis pour une soudure plus aisée, les broches des borniers ou connecteurs 
                             ont été annotés pour permettre une utilisation plus facile de celles-ci. Information importante, le PCB utilisé est un simple en 
                             raison de la nature des composants électroniques utilisés (des composants THT) et des équipements à notre disposition. 
-                            Pour avons fait une capture d’écran du circuit imprimé en 3D pour avoir un aperçu proche de la réalité de notre système :
+                            Nous avons fait une capture d’écran du circuit imprimé en 3D pour avoir un aperçu proche de la réalité de notre système :
                         </p>
                     </div>
                     <p>Caractéristiques du PCB :</p>
@@ -535,44 +535,325 @@
             </section>
             
             <!-- Code Section -->
+                        
             <section id="code">
-                <h2 class="section-title"><i class="fas fa-code"></i> Explication du code</h2>
+                <h2 class="section-title"><i class="fas fa-code"></i> Explication du code de l'ATmega328P</h2>
                 
                 <div class="card">
-                    <h3>Structure générale</h3>
-                    <p>Le code principal est divisé en plusieurs parties :</p>
-                    <ul class="step-list">
-                        <li>Initialisation des capteurs et périphériques</li>
-                        <li>Boucle principale de détection et contrôle</li>
-                        <li>Communication avec l'ESP8266</li>
-                        <li>Gestion des événements (détection, tri, etc.)</li>
-                    </ul>
+                    <h3><i class="fas fa-book"></i> Rappels sur les objectifs du projet</h3>
+                    <p>Ce projet a pour but de :</p>
                     
-                    <h4 class="section-subtitle">Bibliothèques utilisées</h4>
-                    <div class="code-block">
-                        <span class="code-keyword">#include</span> &lt;Wire.h&gt;       <span class="code-comment">// Communication I2C</span><br>
-                        <span class="code-keyword">#include</span> "Adafruit_TCS34725.h" <span class="code-comment">// Capteur couleur</span><br>
-                        <span class="code-keyword">#include</span> &lt;LiquidCrystal_I2C.h&gt; <span class="code-comment">// Ecran LCD</span><br>
-                        <span class="code-keyword">#include</span> &lt;ESP8266WiFi.h&gt; <span class="code-comment">// Communication WiFi</span>
-                    </div>
+                    <ul class="step-list">
+                        <li>Détecter des objets sur un tapis roulant à l'aide de lasers et photorésistances</li>
+                        <li>Analyser leur couleur avec un capteur TCS34725</li>
+                        <li>Contrôler un moteur CC pour le mouvement du tapis</li>
+                        <li>Afficher les informations sur un écran LCD</li>
+                        <li>Utiliser un capteur ultrason pour la détection de distance</li>
+                        <li>Indiquer visuellement l'état avec une LED RGB</li>
+                    </ul>
                 </div>
                 
+                <div class="card" style="background: #f8f9fa; border-radius: 8px; padding: 20px; max-height: 70vh; overflow-y: auto; border: 1px solid #e0e0e0;">
+                    <h3><i class="fas fa-microchip"></i> Code Principal</h3>
+                    <p>Ce système utilise un microcontrôleur qui :</p>
+                    
+                    <ul class="component-list">
+                        <li><i class="fas fa-sensor"></i> Lit les données des photorésistances et du capteur de couleur</li>
+                        <li><i class="fas fa-tachometer-alt"></i> Contrôle la vitesse et la direction du moteur</li>
+                        <li><i class="fas fa-tv"></i> Affiche les informations sur l'écran LCD</li>
+                        <li><i class="fas fa-lightbulb"></i> Gère les indications visuelles avec la LED RGB</li>
+                    </ul>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-code"></i> Bibliothèques utilisées</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <span style="color: #569cd6;">#include</span> &lt;Wire.h&gt;<br>
+                        <span style="color: #569cd6;">#include</span> &lt;Adafruit_TCS34725.h&gt;<br>
+                        <span style="color: #569cd6;">#include</span> &lt;LiquidCrystal_I2C.h&gt;<br>
+                        <span style="color: #569cd6;">#include</span> &lt;math.h&gt;
+                    </div>
+                    
+                    
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-cogs"></i> Définition du matériel et des objets</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                        <span style="color: #57a64a;">// Capteur de couleur et écran LCD</span><br>
+                        Adafruit_TCS34725 sensor = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_154MS, TCS34725_GAIN_4X);<br>
+                        LiquidCrystal_I2C lcd (0x27, 16, 2);<br><br>
+                        
+                        <span style="color: #57a64a;">// Diodes laser et photorésistances</span><br>
+                        <span style="color: #569cd6;">const int</span> laserPin1 = 2, ldrPin1 = A0;<br>
+                        <span style="color: #569cd6;">const int</span> laserPin2 = 3, ldrPin2 = A1;<br>
+                        <span style="color: #569cd6;">const int</span> seuil = 300;<br><br>
+                        
+                        <span style="color: #57a64a;">// Configuration du moteur</span><br>
+                        <span style="color: #569cd6;">const int</span> motor_IN1 = 8;<br>
+                        <span style="color: #569cd6;">const int</span> motor_IN2 = 9;<br>
+                        <span style="color: #569cd6;">const int</span> motor_EN = 10;<br><br>
+                        
+                        <span style="color: #57a64a;">// Variables de vitesse et temps du moteur</span><br>
+                        <span style="color: #569cd6;">const int</span> vitesse1 = 100, time1 = 2000;<br>
+                        <span style="color: #569cd6;">const int</span> vitesse2 = 50, time2 = 2000;<br>
+                        <span style="color: #569cd6;">const int</span> vitesse3 = 150, time3 = 1500;<br><br>
+                        
+                        <span style="color: #57a64a;">// LED RGB</span><br>
+                        <span style="color: #569cd6;">const int</span> redpin = 4, greenpin = 5, bluepin = 6;<br>
+                        <span style="color: #569cd6;">bool</span> commonAnode = true;<br>
+                        <span style="color: #569cd6;">byte</span> gammatable[256];<br><br>
+                        
+                        <span style="color: #57a64a;">// Capteur ultrason</span><br>
+                        <span style="color: #569cd6;">int</span> trigPin = 11;<br>
+                        <span style="color: #569cd6;">int</span> echoPin = 12;<br><br>
+                        
+                        <span style="color: #57a64a;">// État du système</span><br>
+                        <span style="color: #569cd6;">bool</span> dechetOK = false;
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-cog"></i> Fonction setup() - Initialisation</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                        <span style="color: #569cd6;">void</span> setup() {<br>
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Initialisation communication série et I2C</span><br>
+                        &nbsp;&nbsp;Serial.begin(9600);<br>
+                        &nbsp;&nbsp;Wire.begin();<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration LCD</span><br>
+                        &nbsp;&nbsp;lcd.init();<br>
+                        &nbsp;&nbsp;lcd.backlight();<br>
+                        &nbsp;&nbsp;lcd.setCursor(0, 0);<br>
+                        &nbsp;&nbsp;lcd.print("Initialisation ... ");<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration des broches</span><br>
+                        &nbsp;&nbsp;pinMode(laserPin1, OUTPUT);<br>
+                        &nbsp;&nbsp;digitalWrite(laserPin1, HIGH);<br>
+                        &nbsp;&nbsp;pinMode(laserPin2, OUTPUT);<br>
+                        &nbsp;&nbsp;digitalWrite(laserPin2, HIGH);<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration moteur</span><br>
+                        &nbsp;&nbsp;pinMode(motor_IN1, OUTPUT);<br>
+                        &nbsp;&nbsp;pinMode(motor_IN2, OUTPUT);<br>
+                        &nbsp;&nbsp;pinMode(motor_EN, OUTPUT);<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration LED RGB</span><br>
+                        &nbsp;&nbsp;pinMode(redpin, OUTPUT);<br>
+                        &nbsp;&nbsp;pinMode(greenpin, OUTPUT);<br>
+                        &nbsp;&nbsp;pinMode(bluepin, OUTPUT);<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration capteur ultrason</span><br>
+                        &nbsp;&nbsp;pinMode(trigPin, OUTPUT);<br>
+                        &nbsp;&nbsp;pinMode(echoPin, INPUT);<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Initialisation table gamma pour LED RGB</span><br>
+                        &nbsp;&nbsp;<span style="color: #569cd6;">for</span> (<span style="color: #569cd6;">int</span> i = 0; i < 256; i++) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">float</span> x = i / 255.0;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;x = pow(x, 2.5) * 255;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;gammatable[i] = commonAnode ? 255 - x : x;<br>
+                        &nbsp;&nbsp;}<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Vérification capteur de couleur</span><br>
+                        &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (sensor.begin()) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.clear();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.print("Sensor en marche.");<br>
+                        &nbsp;&nbsp;} <span style="color: #569cd6;">else</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.clear();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.print("Erreur capteur");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">while</span> (1);<br>
+                        &nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;lcd.clear();<br>
+                        &nbsp;&nbsp;lcd.print("Systeme PRET! ON");<br>
+                        &nbsp;&nbsp;delay(2000);<br>
+                        &nbsp;&nbsp;lcd.clear();<br>
+                        }
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-functions"></i> Fonctions utilitaires</h4>
+                    
+                    <div class="function-list">
+                        <div class="function-title">Contrôle du moteur</div>
+                        <div class="function-description" style="margin-bottom: 20px;">
+                            <p>Fonctions pour contrôler la direction et la vitesse du moteur.</p>
+                            <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                                <span style="color: #569cd6;">void</span> motorForward(<span style="color: #569cd6;">int</span> speed, <span style="color: #569cd6;">int</span> duration) {<br>
+                                &nbsp;&nbsp;digitalWrite(motor_IN1, HIGH);<br>
+                                &nbsp;&nbsp;digitalWrite(motor_IN2, LOW);<br>
+                                &nbsp;&nbsp;analogWrite(motor_EN, speed);<br>
+                                &nbsp;&nbsp;delay(duration);<br>
+                                }<br><br>
+                                
+                                <span style="color: #569cd6;">void</span> motorStop() {<br>
+                                &nbsp;&nbsp;digitalWrite(motor_IN1, LOW);<br>
+                                &nbsp;&nbsp;digitalWrite(motor_IN2, LOW);<br>
+                                &nbsp;&nbsp;analogWrite(motor_EN, 0);<br>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="function-title">Détection de distance</div>
+                        <div class="function-description" style="margin-bottom: 20px;">
+                            <p>Utilise le capteur ultrason pour mesurer la distance.</p>
+                            <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                                <span style="color: #569cd6;">float</span> getDistance() {<br>
+                                &nbsp;&nbsp;digitalWrite(trigPin, LOW);<br>
+                                &nbsp;&nbsp;delayMicroseconds(2);<br>
+                                &nbsp;&nbsp;digitalWrite(trigPin, HIGH);<br>
+                                &nbsp;&nbsp;delayMicroseconds(10);<br>
+                                &nbsp;&nbsp;digitalWrite(trigPin, LOW);<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">long</span> duration = pulseIn(echoPin, HIGH);<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">return</span> duration * 0.034 / 2;<br>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="function-title">Contrôle LED RGB</div>
+                        <div class="function-description" style="margin-bottom: 20px;">
+                            <p>Change la couleur de la LED RGB selon l'état du système.</p>
+                            <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                                <span style="color: #569cd6;">void</span> setColor(<span style="color: #569cd6;">int</span> red, <span style="color: #569cd6;">int</span> green, <span style="color: #569cd6;">int</span> blue) {<br>
+                                &nbsp;&nbsp;analogWrite(redpin, gammatable[red]);<br>
+                                &nbsp;&nbsp;analogWrite(greenpin, gammatable[green]);<br>
+                                &nbsp;&nbsp;analogWrite(bluepin, gammatable[blue]);<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section id="code">
+                <h2 class="section-title"><i class="fas fa-code"></i> Explication du code de l'ESP8266</h2>
+                
                 <div class="card">
-                    <h3>Fonctionnement principal</h3>
-                    <div class="code-block">
-                        <span class="code-keyword">void</span> loop() {<br>
-                        &nbsp;&nbsp;<span class="code-comment">// 1. Vérifier présence déchet</span><br>
-                        &nbsp;&nbsp;<span class="code-keyword">if</span> (detecter_dechet()) {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;activer_moteur();<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 2. Détection couleur</span><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;uint16_t couleur = lire_couleur();<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 3. Transmission données</span><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;envoyer_donnees(couleur);<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 4. Attendre expulsion</span><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;attendre_expulsion();<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;arreter_moteur();<br>
+                    <h3><i class="fas fa-book"></i> Rappels sur les objectifs du projet</h3>
+                    <p>Ce projet a pour but de :</p>
+                    
+                    <ul class="step-list">
+                        <li>Communiquer avec un Arduino via une liaison série logicielle</li>
+                        <li>Se connecter à un réseau WiFi</li>
+                        <li>Envoyer des données à une base de données Firebase</li>
+                        <li>Compter et catégoriser différents types de déchets</li>
+                        <li>Afficher les informations de débogage via le port série</li>
+                    </ul>
+                </div>
+                
+                <div class="card" style="background: #f8f9fa; border-radius: 8px; padding: 20px; max-height: 70vh; overflow-y: auto; border: 1px solid #e0e0e0;">
+                    <h3><i class="fas fa-microchip"></i> Code Principal</h3>
+                    <p>Ce système utilise un ESP8266 qui :</p>
+                    
+                    <ul class="component-list">
+                        <li><i class="fas fa-exchange-alt"></i> Reçoit des données d'un Arduino via SoftwareSerial</li>
+                        <li><i class="fas fa-wifi"></i> Se connecte à un réseau WiFi</li>
+                        <li><i class="fas fa-database"></i> Envoie des données à Firebase en temps réel</li>
+                        <li><i class="fas fa-calculator"></i> Gère des compteurs pour différentes catégories</li>
+                    </ul>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-code"></i> Bibliothèques utilisées</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <span style="color: #569cd6;">#include</span> &lt;SoftwareSerial.h&gt;<br>
+                        <span style="color: #569cd6;">#include</span> &lt;ESP8266WiFi.h&gt;<br>
+                        <span style="color: #569cd6;">#include</span> &lt;WiFiClientSecure.h&gt;<br>
+                        <span style="color: #569cd6;">#include</span> &lt;ESP8266HTTPClient.h&gt;
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-cogs"></i> Définition des variables et constantes</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                        <span style="color: #57a64a;">// SoftSerial: RX = D5 (GPIO14), TX = D6 (GPIO12)</span><br>
+                        SoftwareSerial softSerial(14, 12); <span style="color: #57a64a;">// RX, TX</span><br><br>
+                        
+                        <span style="color: #57a64a;">// Configuration WiFi</span><br>
+                        <span style="color: #569cd6;">const char</span>* ssid = <span style="color: #ce9178;">"Name"</span>; <span style="color: #57a64a;">// Nom de votre wifi</span><br>
+                        <span style="color: #569cd6;">const char</span>* password = <span style="color: #ce9178;">"Password"</span>; <span style="color: #57a64a;">// Mot de passe</span><br><br>
+                        
+                        <span style="color: #57a64a;">// Configuration Firebase</span><br>
+                        <span style="color: #569cd6;">const String</span> firebaseHost = <span style="color: #ce9178;">"https://teckbot-3d020-default-rtdb.firebaseio.com"</span>;<br><br>
+                        
+                        <span style="color: #57a64a;">// Compteurs pour les différentes catégories</span><br>
+                        <span style="color: #569cd6;">int</span> compteurVert = 0;<br>
+                        <span style="color: #569cd6;">int</span> compteurBleu = 0;<br>
+                        <span style="color: #569cd6;">int</span> compteurJaune = 0;<br>
+                        <span style="color: #569cd6;">int</span> compteurRouge = 0;
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-cog"></i> Fonction setup() - Initialisation</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                        <span style="color: #569cd6;">void</span> setup() {<br>
+                        &nbsp;&nbsp;Serial.begin(9600);       <span style="color: #57a64a;">// Pour debug</span><br>
+                        &nbsp;&nbsp;softSerial.begin(9600);   <span style="color: #57a64a;">// Pour recevoir de l'Arduino</span><br><br>
+                        
+                        &nbsp;&nbsp;WiFi.begin(ssid, password);<br>
+                        &nbsp;&nbsp;Serial.print(<span style="color: #ce9178;">"Connexion au WiFi..."</span>);<br>
+                        &nbsp;&nbsp;<span style="color: #569cd6;">while</span> (WiFi.status() != WL_CONNECTED) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;delay(500);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Serial.print(<span style="color: #ce9178;">"."</span>);<br>
+                        &nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;Serial.println(<span style="color: #ce9178;">"\nWiFi connecté !"</span>);<br>
+                        }
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-sync-alt"></i> Boucle principale - loop()</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                        <span style="color: #569cd6;">void</span> loop() {<br>
+                        &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (softSerial.available()) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">String</span> data = softSerial.readStringUntil(<span style="color: #ce9178;">'\n'</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;data.trim();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Serial.println(<span style="color: #ce9178;">"Reçu : "</span> + data);<br><br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">if</span> (data == <span style="color: #ce9178;">"0"</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteurVert++;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateFirebase(<span style="color: #ce9178;">"/dechets/vert.json"</span>, String(compteurVert));<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;} <span style="color: #569cd6;">else if</span> (data == <span style="color: #ce9178;">"1"</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteurBleu++;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateFirebase(<span style="color: #ce9178;">"/dechets/bleu.json"</span>, String(compteurBleu));<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;} <span style="color: #569cd6;">else if</span> (data == <span style="color: #ce9178;">"2"</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteurJaune++;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateFirebase(<span style="color: #ce9178;">"/dechets/jaune.json"</span>, String(compteurJaune));<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;} <span style="color: #569cd6;">else if</span> (data == <span style="color: #ce9178;">"3"</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteurRouge++;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateFirebase(<span style="color: #ce9178;">"/dechets/rouge.json"</span>, String(compteurRouge));<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;} <span style="color: #569cd6;">else</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serial.println(<span style="color: #ce9178;">"Type inconnu : "</span> + data);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
                         &nbsp;&nbsp;}<br>
                         }
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-functions"></i> Fonctions utilitaires</h4>
+                    
+                    <div class="function-list">
+                        <div class="function-title">Mise à jour Firebase</div>
+                        <div class="function-description" style="margin-bottom: 20px;">
+                            <p>Envoie des données à la base de données Firebase en temps réel.</p>
+                            <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                                <span style="color: #569cd6;">void</span> updateFirebase(<span style="color: #569cd6;">String</span> path, <span style="color: #569cd6;">String</span> value) {<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (WiFi.status() == WL_CONNECTED) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;WiFiClientSecure client;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;client.setInsecure();<br><br>
+                                
+                                &nbsp;&nbsp;&nbsp;&nbsp;HTTPClient http;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">String</span> url = firebaseHost + path;<br><br>
+                                
+                                &nbsp;&nbsp;&nbsp;&nbsp;http.begin(client, url);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;http.addHeader(<span style="color: #ce9178;">"Content-Type"</span>, <span style="color: #ce9178;">"application/json"</span>);<br><br>
+                                
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">int</span> httpResponseCode = http.PUT(value);<br><br>
+                                
+                                &nbsp;&nbsp;&nbsp;&nbsp;Serial.print(<span style="color: #ce9178;">"Mise à jour "</span>);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;Serial.print(path);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;Serial.print(<span style="color: #ce9178;">" ➜ "</span>);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;Serial.println(value);<br><br>
+                                
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">if</span> (httpResponseCode > 0) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">String</span> response = http.getString();<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serial.println(<span style="color: #ce9178;">"Réponse Firebase : "</span> + response);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;} <span style="color: #569cd6;">else</span> {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serial.println(<span style="color: #ce9178;">"Erreur HTTP : "</span> + String(httpResponseCode));<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                                
+                                &nbsp;&nbsp;&nbsp;&nbsp;http.end();<br>
+                                &nbsp;&nbsp;} <span style="color: #569cd6;">else</span> {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;Serial.println(<span style="color: #ce9178;">"Non connecté au WiFi"</span>);<br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -598,19 +879,17 @@
                 </div>
             </section>
             
-            <!-- Video Section -->
-            <section id="video">
-                <h2 class="section-title"><i class="fas fa-video"></i> Vidéo de démonstration</h2>
-                <div class="card">
-                    <a href="https://vimeo.com/1095186825/ad60296bef?share=copy" target="_blank">
-                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
-                            <img src="images/demo_convoyeur.jpg" alt="Vidéo de démonstration" style="width: 100%; height: auto; border-radius: 10px;">
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                <i class="fas fa-play-circle" style="font-size: 5rem; color: #e74c3c; opacity: 0.8;"></i>
-                            </div>
-                        </div>
-                    </a>
-                    <p style="text-align: center; margin-top: 15px; font-style: italic;">Cliquez pour voir la démonstration du convoyeur en action</p>
+
+            <section id = "demo">
+                <div class="videos">
+
+                        <p>
+                            <strong>Quelques vidéos de test des composants.</strong>
+                        </p>
+
+                    <iframe src="https://player.vimeo.com/video/1100819815?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1080" height="1920" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Démo interface Web"></iframe>
+                    <iframe src="https://player.vimeo.com/video/1100825573?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="720" height="1280" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Démo Détection Diode Laser"></iframe>
+                    <iframe src="https://player.vimeo.com/video/1104656718?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="794" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ecriture du code pour la détection par Laser"></iframe>
                 </div>
             </section>
         </div>
@@ -631,7 +910,7 @@
             <ul class="component-list">
                 <li><a href="doc/documentation_convoyeur.pdf"><i class="fas fa-file-pdf"></i> Documentation complète</a></li>
                 <li><a href="code/code_convoyeur.zip"><i class="fas fa-file-code"></i> Code source</a></li>
-                <li><a href="schemas/kicad_files.zip"><i class="fas fa-drafting-compass"></i> Schémas électroniques</a></li>
+                <li><a href="files/Kicad_projects.zip"><i class="fas fa-drafting-compass"></i> Schémas électroniques</a></li>
             </ul>
 
             <h3 class="section-subtitle"><i class="fas fa-cube"></i> Composants clés</h3>
@@ -667,8 +946,13 @@
                         <h3>Références</h3>
                         <ul class="component-list">
                             <li><a href="https://www.watelectronics.com/ky-008-laser-module/" target="_blank"><i class="fas fa-link"></i> KY-008 Documentation</a></li>
-                            <li><a href="https://www.vyrian.com/blog/atmega328p-microcontroller-features-pinout-configuration-datasheets/" target="_blank"><i class="fas fa-link"></i> ATMEGA328-P Datasheet</a></li>
+                            <li><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf" target="_blank"><i class="fas fa-link"></i> ATMEGA328-P Datasheet</a></li>
                             <li><a href="https://www.moussasoft.com/esp32-et-esp8266/" target="_blank"><i class="fas fa-link"></i> ESP8266 Guide</a></li>
+                            <li><a href="https://arduino-france.site/ldr-arduino/" target="_blank"><i class="fas fa-link"></i> Photorésistance Guide</a></li>
+                            <li><a href="https://www.microsonic.de/fr/support/capteurs-%C3%A0-ultrasons/principe.htm" target="_blank"><i class="fas fa-link"></i> Photorésistance Guide</a></li>
+                            <li><a href="https://www.arduino.cc/en/Tutorial/LiquidCrystal" target="_blank"><i class="fas fa-link"></i> LCD I2C Guide</a></li>
+                            <li><a href="https://www.moussasoft.com/led-rgb-avec-arduino/" target="_blank"><i class="fas fa-link"></i> Guide LED RGB</a></li>
+                            <li><a href="https://passionelectronique.fr/tutoriel-l298n/" target="_blank"><i class="fas fa-link"></i> Guide L298N</a></li>
                         </ul>
                     </div>
                 </div>
