@@ -507,6 +507,12 @@
                     <br>
                     <img src="images/pcb_1.png" alt="PCB design" width="800">
                     <img src="images/pcb_2.png" alt="PCB design" width="800">
+                    <div class="image-container">
+                        <img src="images/pcb_real2.png" alt=""  width="250">
+                        <img src="images/pcb_real.png" alt=""  width="250">
+                        <img src="images/pcb_real3.png" alt=""  width="250">
+                    </div>
+                    
                 </div>
                 
                 <div class="card">
@@ -537,63 +543,51 @@
             <!-- Code Section -->
                         
             <section id="code">
-                <h2 class="section-title"><i class="fas fa-code"></i> Explication du code de l'ATmega328P</h2>
+                <h2 class="section-title"><i class="fas fa-microchip"></i> Code complet du Firmware Arduino</h2>
                 
                 <div class="card">
-                    <h3><i class="fas fa-book"></i> Rappels sur les objectifs du projet</h3>
-                    <p>Ce projet a pour but de :</p>
+                    <h3><i class="fas fa-book"></i> Objectifs du programme</h3>
+                    <p>Ce firmware contrôle l'ensemble du système de tri des déchets :</p>
                     
                     <ul class="step-list">
-                        <li>Détecter des objets sur un tapis roulant à l'aide de lasers et photorésistances</li>
-                        <li>Analyser leur couleur avec un capteur TCS34725</li>
-                        <li>Contrôler un moteur CC pour le mouvement du tapis</li>
-                        <li>Afficher les informations sur un écran LCD</li>
-                        <li>Utiliser un capteur ultrason pour la détection de distance</li>
-                        <li>Indiquer visuellement l'état avec une LED RGB</li>
+                        <li>Détection de présence via des lasers et photorésistances</li>
+                        <li>Identification des couleurs avec le capteur TCS34725</li>
+                        <li>Contrôle précis du convoyeur à 3 vitesses</li>
+                        <li>Communication série avec l'ESP8266</li>
+                        <li>Affichage des informations sur LCD</li>
+                        <li>Feedback visuel avec LED RGB</li>
                     </ul>
                 </div>
                 
                 <div class="card" style="background: #f8f9fa; border-radius: 8px; padding: 20px; max-height: 70vh; overflow-y: auto; border: 1px solid #e0e0e0;">
-                    <h3><i class="fas fa-microchip"></i> Code Principal</h3>
-                    <p>Ce système utilise un microcontrôleur qui :</p>
+                    <h3><i class="fas fa-file-code"></i> Implémentation complète</h3>
                     
-                    <ul class="component-list">
-                        <li><i class="fas fa-sensor"></i> Lit les données des photorésistances et du capteur de couleur</li>
-                        <li><i class="fas fa-tachometer-alt"></i> Contrôle la vitesse et la direction du moteur</li>
-                        <li><i class="fas fa-tv"></i> Affiche les informations sur l'écran LCD</li>
-                        <li><i class="fas fa-lightbulb"></i> Gère les indications visuelles avec la LED RGB</li>
-                    </ul>
-                    
-                    <h4 class="section-subtitle"><i class="fas fa-code"></i> Bibliothèques utilisées</h4>
-                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <h4 class="section-subtitle"><i class="fas fa-code"></i> Bibliothèques et Initialisation</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
                         <span style="color: #569cd6;">#include</span> &lt;Wire.h&gt;<br>
                         <span style="color: #569cd6;">#include</span> &lt;Adafruit_TCS34725.h&gt;<br>
                         <span style="color: #569cd6;">#include</span> &lt;LiquidCrystal_I2C.h&gt;<br>
-                        <span style="color: #569cd6;">#include</span> &lt;math.h&gt;
+                        <span style="color: #569cd6;">#include</span> &lt;math.h&gt;<br><br>
+                        
+                        <span style="color: #57a64a;">// Initialisation capteur et LCD</span><br>
+                        Adafruit_TCS34725 sensor = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_154MS, TCS34725_GAIN_4X);<br>
+                        LiquidCrystal_I2C lcd(0x27, 16, 2);
                     </div>
                     
-                    
-                    
-                    <h4 class="section-subtitle"><i class="fas fa-cogs"></i> Définition du matériel et des objets</h4>
+                    <h4 class="section-subtitle"><i class="fas fa-cogs"></i> Configuration des Périphériques</h4>
                     <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
-                        <span style="color: #57a64a;">// Capteur de couleur et écran LCD</span><br>
-                        Adafruit_TCS34725 sensor = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_154MS, TCS34725_GAIN_4X);<br>
-                        LiquidCrystal_I2C lcd (0x27, 16, 2);<br><br>
-                        
-                        <span style="color: #57a64a;">// Diodes laser et photorésistances</span><br>
+                        <span style="color: #57a64a;">// Capteurs laser/LDR</span><br>
                         <span style="color: #569cd6;">const int</span> laserPin1 = 2, ldrPin1 = A0;<br>
                         <span style="color: #569cd6;">const int</span> laserPin2 = 3, ldrPin2 = A1;<br>
                         <span style="color: #569cd6;">const int</span> seuil = 300;<br><br>
                         
-                        <span style="color: #57a64a;">// Configuration du moteur</span><br>
-                        <span style="color: #569cd6;">const int</span> motor_IN1 = 8;<br>
-                        <span style="color: #569cd6;">const int</span> motor_IN2 = 9;<br>
-                        <span style="color: #569cd6;">const int</span> motor_EN = 10;<br><br>
+                        <span style="color: #57a64a;">// Configuration moteur</span><br>
+                        <span style="color: #569cd6;">const int</span> motor_IN1 = 8, motor_IN2 = 9, motor_EN = 10;<br><br>
                         
-                        <span style="color: #57a64a;">// Variables de vitesse et temps du moteur</span><br>
-                        <span style="color: #569cd6;">const int</span> vitesse1 = 100, time1 = 2000;<br>
-                        <span style="color: #569cd6;">const int</span> vitesse2 = 50, time2 = 2000;<br>
-                        <span style="color: #569cd6;">const int</span> vitesse3 = 150, time3 = 1500;<br><br>
+                        <span style="color: #57a64a;">// Vitesses convoyeur</span><br>
+                        <span style="color: #569cd6;">const int</span> vitesse1 = 100, time1 = 2000; <span style="color: #57a64a;">// Détection initiale</span><br>
+                        <span style="color: #569cd6;">const int</span> vitesse2 = 50, time2 = 2000;  <span style="color: #57a64a;">// Zone couleur</span><br>
+                        <span style="color: #569cd6;">const int</span> vitesse3 = 150, time3 = 1500; <span style="color: #57a64a;">// Fin convoyeur</span><br><br>
                         
                         <span style="color: #57a64a;">// LED RGB</span><br>
                         <span style="color: #569cd6;">const int</span> redpin = 4, greenpin = 5, bluepin = 6;<br>
@@ -601,54 +595,46 @@
                         <span style="color: #569cd6;">byte</span> gammatable[256];<br><br>
                         
                         <span style="color: #57a64a;">// Capteur ultrason</span><br>
-                        <span style="color: #569cd6;">int</span> trigPin = 11;<br>
-                        <span style="color: #569cd6;">int</span> echoPin = 12;<br><br>
+                        <span style="color: #569cd6;">int</span> trigPin = 11, echoPin = 12;<br><br>
                         
-                        <span style="color: #57a64a;">// État du système</span><br>
+                        <span style="color: #57a64a;">// État système</span><br>
                         <span style="color: #569cd6;">bool</span> dechetOK = false;
                     </div>
                     
-                    <h4 class="section-subtitle"><i class="fas fa-cog"></i> Fonction setup() - Initialisation</h4>
+                    <h4 class="section-subtitle"><i class="fas fa-cog"></i> Fonction setup()</h4>
                     <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
                         <span style="color: #569cd6;">void</span> setup() {<br>
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Initialisation communication série et I2C</span><br>
                         &nbsp;&nbsp;Serial.begin(9600);<br>
                         &nbsp;&nbsp;Wire.begin();<br><br>
                         
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration LCD</span><br>
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Init LCD</span><br>
                         &nbsp;&nbsp;lcd.init();<br>
                         &nbsp;&nbsp;lcd.backlight();<br>
                         &nbsp;&nbsp;lcd.setCursor(0, 0);<br>
                         &nbsp;&nbsp;lcd.print("Initialisation ... ");<br><br>
                         
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration des broches</span><br>
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration E/S</span><br>
                         &nbsp;&nbsp;pinMode(laserPin1, OUTPUT);<br>
                         &nbsp;&nbsp;digitalWrite(laserPin1, HIGH);<br>
                         &nbsp;&nbsp;pinMode(laserPin2, OUTPUT);<br>
-                        &nbsp;&nbsp;digitalWrite(laserPin2, HIGH);<br><br>
-                        
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration moteur</span><br>
+                        &nbsp;&nbsp;digitalWrite(laserPin2, HIGH);<br>
                         &nbsp;&nbsp;pinMode(motor_IN1, OUTPUT);<br>
                         &nbsp;&nbsp;pinMode(motor_IN2, OUTPUT);<br>
-                        &nbsp;&nbsp;pinMode(motor_EN, OUTPUT);<br><br>
-                        
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration LED RGB</span><br>
+                        &nbsp;&nbsp;pinMode(motor_EN, OUTPUT);<br>
                         &nbsp;&nbsp;pinMode(redpin, OUTPUT);<br>
                         &nbsp;&nbsp;pinMode(greenpin, OUTPUT);<br>
-                        &nbsp;&nbsp;pinMode(bluepin, OUTPUT);<br><br>
-                        
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Configuration capteur ultrason</span><br>
+                        &nbsp;&nbsp;pinMode(bluepin, OUTPUT);<br>
                         &nbsp;&nbsp;pinMode(trigPin, OUTPUT);<br>
                         &nbsp;&nbsp;pinMode(echoPin, INPUT);<br><br>
                         
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Initialisation table gamma pour LED RGB</span><br>
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Table gamma LED RGB</span><br>
                         &nbsp;&nbsp;<span style="color: #569cd6;">for</span> (<span style="color: #569cd6;">int</span> i = 0; i < 256; i++) {<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">float</span> x = i / 255.0;<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;x = pow(x, 2.5) * 255;<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;gammatable[i] = commonAnode ? 255 - x : x;<br>
                         &nbsp;&nbsp;}<br><br>
                         
-                        &nbsp;&nbsp;<span style="color: #57a64a;">// Vérification capteur de couleur</span><br>
+                        &nbsp;&nbsp;<span style="color: #57a64a;">// Init capteur couleur</span><br>
                         &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (sensor.begin()) {<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;lcd.clear();<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;lcd.print("Sensor en marche.");<br>
@@ -664,21 +650,65 @@
                         }
                     </div>
                     
-                    <h4 class="section-subtitle"><i class="fas fa-functions"></i> Fonctions utilitaires</h4>
+                    <h4 class="section-subtitle"><i class="fas fa-sync-alt"></i> Fonction loop()</h4>
+                    <div class="code-block" style="background: #155e8bfb; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                        <span style="color: #569cd6;">void</span> loop() {<br>
+                        &nbsp;&nbsp;<span style="color: #569cd6;">int</span> detect = analogRead(ldrPin1);<br><br>
+                        
+                        &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (detect < seuil && !dechetOK) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.setCursor(0, 0);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.print("Dechet detecte   ");<br><br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #57a64a;">// Attente arrivée zone couleur</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">while</span> (analogRead(ldrPin2) > seuil) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;demarrerTapis(vitesse1, time1);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delay(70);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #57a64a;">// Ralentir pour détection</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;demarrerTapis(vitesse2, time2);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;arreterTapis();<br><br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #57a64a;">// Détection couleur</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">String</span> color = detecterCouleur();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.setCursor(0, 1);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.print("Couleur: ");<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.print(color);<br><br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #57a64a;">// Envoi à ESP8266</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;envoyerCouleur(color);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;delay(3000);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dechetOK = true;<br><br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #57a64a;">// Convoyage vers fin de tapis</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">while</span> (mesurerDistance() > 6) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;demarrerTapis(vitesse3, 50);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;arreterTapis();<br>
+                        &nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (detect >= seuil && dechetOK) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;dechetOK = false;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.setCursor(0, 0);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;lcd.print("Aucun dechet     ");<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                    
+                    <h4 class="section-subtitle"><i class="fas fa-functions"></i> Fonctions Utilitaires</h4>
                     
                     <div class="function-list">
-                        <div class="function-title">Contrôle du moteur</div>
+                        <div class="function-title">Contrôle du Convoyeur</div>
                         <div class="function-description" style="margin-bottom: 20px;">
-                            <p>Fonctions pour contrôler la direction et la vitesse du moteur.</p>
                             <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
-                                <span style="color: #569cd6;">void</span> motorForward(<span style="color: #569cd6;">int</span> speed, <span style="color: #569cd6;">int</span> duration) {<br>
+                                <span style="color: #569cd6;">void</span> demarrerTapis(<span style="color: #569cd6;">int</span> vitesse, <span style="color: #569cd6;">int</span> time) {<br>
                                 &nbsp;&nbsp;digitalWrite(motor_IN1, HIGH);<br>
                                 &nbsp;&nbsp;digitalWrite(motor_IN2, LOW);<br>
-                                &nbsp;&nbsp;analogWrite(motor_EN, speed);<br>
-                                &nbsp;&nbsp;delay(duration);<br>
+                                &nbsp;&nbsp;analogWrite(motor_EN, vitesse);<br>
+                                &nbsp;&nbsp;digitalWrite(7, HIGH);<br>
+                                &nbsp;&nbsp;delay(time);<br>
                                 }<br><br>
                                 
-                                <span style="color: #569cd6;">void</span> motorStop() {<br>
+                                <span style="color: #569cd6;">void</span> arreterTapis() {<br>
                                 &nbsp;&nbsp;digitalWrite(motor_IN1, LOW);<br>
                                 &nbsp;&nbsp;digitalWrite(motor_IN2, LOW);<br>
                                 &nbsp;&nbsp;analogWrite(motor_EN, 0);<br>
@@ -686,30 +716,67 @@
                             </div>
                         </div>
                         
-                        <div class="function-title">Détection de distance</div>
+                        <div class="function-title">Détection de Couleur</div>
                         <div class="function-description" style="margin-bottom: 20px;">
-                            <p>Utilise le capteur ultrason pour mesurer la distance.</p>
                             <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
-                                <span style="color: #569cd6;">float</span> getDistance() {<br>
+                                <span style="color: #569cd6;">String</span> detecterCouleur() {<br>
+                                &nbsp;&nbsp;sensor.setInterrupt(false);<br>
+                                &nbsp;&nbsp;delay(100);<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">uint16_t</span> r, g, b, c, colorTemp, lux;<br>
+                                &nbsp;&nbsp;sensor.getRawData(&r, &g, &b, &c);<br>
+                                &nbsp;&nbsp;sensor.setInterrupt(true);<br><br>
+                                
+                                &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (c > r && c > g && c > b && lux > 500) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> "AUCUNE COULEUR";<br>
+                                &nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (r > g && r > b && r < c && lux > 10 && lux < 100) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;afficherCouleur(r, g, b);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> "ROUGE";<br>
+                                &nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (g > r && g > b && g < c && lux > 200 && lux < 300) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;afficherCouleur(r, g, b);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> "VERT";<br>
+                                &nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (b > r && b > g && b < c && lux > 100 && lux < 200) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;afficherCouleur(r, g, b);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> "BLEU";<br>
+                                &nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (r > 600 && r < 850 && g > 450 && g < 630 && b > 300 && b < 440 && lux > 300 && lux < 420 && abs(r - g) < 250) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;afficherCouleur(r, g, b);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> "JAUNE";<br>
+                                &nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else</span> {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #569cd6;">return</span> "AUCUNE COULEUR";<br>
+                                &nbsp;&nbsp;}<br>
+                                }<br><br>
+                                
+                                <span style="color: #569cd6;">void</span> afficherCouleur(<span style="color: #569cd6;">uint16_t</span> r, <span style="color: #569cd6;">uint16_t</span> g, <span style="color: #569cd6;">uint16_t</span> b) {<br>
+                                &nbsp;&nbsp;analogWrite(redpin, gammatable[min(r, 255)]);<br>
+                                &nbsp;&nbsp;analogWrite(greenpin, gammatable[min(g, 255)]);<br>
+                                &nbsp;&nbsp;analogWrite(bluepin, gammatable[min(b, 255)]);<br>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="function-title">Communication et Capteurs</div>
+                        <div class="function-description" style="margin-bottom: 20px;">
+                            <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
+                                <span style="color: #569cd6;">void</span> envoyerCouleur(<span style="color: #569cd6;">String</span> color) {<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">if</span> (color == "ROUGE") Serial.println("3");<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (color == "BLEU") Serial.println("1");<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (color == "VERT") Serial.println("0");<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">else if</span> (color == "JAUNE") Serial.println("2");<br>
+                                }<br><br>
+                                
+                                <span style="color: #569cd6;">float</span> mesurerDistance() {<br>
                                 &nbsp;&nbsp;digitalWrite(trigPin, LOW);<br>
                                 &nbsp;&nbsp;delayMicroseconds(2);<br>
                                 &nbsp;&nbsp;digitalWrite(trigPin, HIGH);<br>
                                 &nbsp;&nbsp;delayMicroseconds(10);<br>
                                 &nbsp;&nbsp;digitalWrite(trigPin, LOW);<br>
                                 &nbsp;&nbsp;<span style="color: #569cd6;">long</span> duration = pulseIn(echoPin, HIGH);<br>
-                                &nbsp;&nbsp;<span style="color: #569cd6;">return</span> duration * 0.034 / 2;<br>
-                                }
-                            </div>
-                        </div>
-                        
-                        <div class="function-title">Contrôle LED RGB</div>
-                        <div class="function-description" style="margin-bottom: 20px;">
-                            <p>Change la couleur de la LED RGB selon l'état du système.</p>
-                            <div class="function-code" style="background: #155e8bfb; padding: 15px; border-radius: 5px; font-family: 'Fira Code', monospace; font-size: 14px; overflow-x: auto;">
-                                <span style="color: #569cd6;">void</span> setColor(<span style="color: #569cd6;">int</span> red, <span style="color: #569cd6;">int</span> green, <span style="color: #569cd6;">int</span> blue) {<br>
-                                &nbsp;&nbsp;analogWrite(redpin, gammatable[red]);<br>
-                                &nbsp;&nbsp;analogWrite(greenpin, gammatable[green]);<br>
-                                &nbsp;&nbsp;analogWrite(bluepin, gammatable[blue]);<br>
+                                &nbsp;&nbsp;delay(10);<br>
+                                &nbsp;&nbsp;<span style="color: #569cd6;">return</span> duration * 0.034 / 2.0;<br>
                                 }
                             </div>
                         </div>
@@ -722,7 +789,7 @@
                 <h2 class="section-title"><i class="fas fa-code"></i> Explication du code de l'ESP8266</h2>
                 
                 <div class="card">
-                    <h3><i class="fas fa-book"></i> Rappels sur les objectifs du projet</h3>
+                    <h3><i class="fas fa-book"></i> Rappels sur les objectifs du programme</h3>
                     <p>Ce projet a pour but de :</p>
                     
                     <ul class="step-list">
@@ -883,10 +950,10 @@
             <section id = "demo">
                 <div class="videos">
 
-                        <p>
-                            <strong>Quelques vidéos de test des composants.</strong>
-                        </p>
-
+                    <p>
+                        <strong>Quelques vidéos de test des composants.</strong>
+                    </p>
+                    
                     <iframe src="https://player.vimeo.com/video/1100819815?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="800" height="1000" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Démo interface Web"></iframe>
                     <iframe src="https://player.vimeo.com/video/1100825573?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="800" height="1000" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Démo Détection Diode Laser"></iframe>
                     <iframe src="https://player.vimeo.com/video/1104656718?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="794" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ecriture du code pour la détection par Laser"></iframe>
